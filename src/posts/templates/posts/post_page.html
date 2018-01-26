@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags wagtailsettings_tags snippets_tags %}
+
+{% block body_class %}post-page{% endblock %}
+
+{% block content %}
+
+    {% subheader %}
+
+    <div class="container">
+	    <div class="page-content-wrapper">
+	        <div class="post-wrapper">
+	            <article class="post">
+
+                    <header class="post-info">
+                        <h1 class="post-title">{{ page.title }}</h1>
+                        <div class="meta">
+                            <p>
+                                <span>{{ page.created.date }}</span>
+                                <span>{{ page.created | timesince }} ago</span>
+                                <span>{{ page.get_read_time | capfirst }} read</span>
+                            </p>
+
+                            {% if page.topic.exists %}
+                                <p>
+                                    {% for node in page.topic.get_ancestors %}
+                                        <span>
+                                            <a href="{% slugurl "topic" %}{{ node.name }}">
+                                                {{ node.name }}
+                                            </a>
+                                        </span>
+                                    {% endfor %}
+                                    <span>
+                                        <a href="{% slugurl "topic" %}{{ page.topic.name }}">
+                                            {{ page.topic.name }}
+                                        </a>
+                                    </span>
+                                </p>
+                            {% endif %}
+                        </div>
+                    </header>
+
+                    {% image page.image original as post_image %}
+
+		            <div class="post-image" style="
+		    	        background-image: url({{ post_image.url }})">
+		            </div>
+
+                    {{ page.content | richtext }}
+
+                </article>
+
+		        <p class="page-nav">
+		            <a href="{{ page.get_parent.url }}">
+			            <i class="fa fa-angle-left" aria-hidden="true">&nbsp;</i>
+			            &nbsp;
+	 		            Posts
+                    </a>
+	        	</p>
+
+                {% if page.tags.all.exists %}
+                    <div class="tags">
+                        {% for tag in page.tags.all|dictsort:"name" %}
+                            <a href="{% slugurl "tag" %}?q={{ tag }}" class="tag">{{ tag }}</a>
+                            &nbsp;
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% include "comments/partials/comments.html" %}
+	
+	        </div>
+
+	    {% sidebar posts %}
+        </div>
+
+    </div>
+
+    {% footer %}
+
+
+{% endblock %}

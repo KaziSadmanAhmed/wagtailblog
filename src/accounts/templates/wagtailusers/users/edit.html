@@ -1,0 +1,11 @@
+{% extends "wagtailusers/users/edit.html" %}
+
+{% block extra_fields %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.profile_image %}
+{% endblock extra_fields %}
+
+{% block extra_js %}
+    {{ block.super }}
+    {% include "wagtailadmin/pages/_editor_js.html" %}
+{% endblock extra_js %}
+

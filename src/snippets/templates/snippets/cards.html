@@ -1,0 +1,35 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="posts">
+
+    {% for post in posts %}
+
+        {% image post.image height-250 as post_image %}
+	
+        <article class="post">
+
+            <a href="{% pageurl post %}">
+                <div class="post-image-wrapper" style="
+                height: {{ post_image.height }}px;">
+                
+                    <div class="post-image" style="
+				    background-image: url({{ post_image.url }});">
+                    </div>
+                </div>
+            </a>
+
+            <header class="post-info">
+                <a href="{% pageurl post %}">
+                    <h2 class="post-title">{{ post.title | truncatechars:50 }}</h2>
+                </a>
+                
+                <p class="post-teaser">
+                    {{ post.text | truncatewords:15  }}
+                </p>
+            </header>
+
+		</article>
+
+    {% endfor %}
+
+</div>

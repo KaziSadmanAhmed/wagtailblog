@@ -1,0 +1,21 @@
+{% load wagtailcore_tags %}
+
+<nav>
+    <div class="nav-menu">
+        <ul>
+            {% for item in menu.items.all %}
+                <li><a href="{{ item.url }}">{{ item.name }}</a></li>
+            {% endfor %}
+    	</ul>
+    </div>
+
+    <div class="search-form">
+        <form action="{% slugurl "search" %}?q={{ search_query }}">
+            <input name="q" type="text" value="{{ search_query }}" placeholder="Search">
+            <button type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
+</nav>
+

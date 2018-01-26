@@ -1,0 +1,21 @@
+{% load wagtailimages_tags snippets_tags %}
+
+<header>
+    {% menu %}
+    <div class="container">
+        <div class="subheader">
+            
+            {% image subheader.image fill-100x100 as subheader_image %}
+            <div class="subheader-image"
+             style="background: url({{ subheader_image.url }});
+                    height: {{ subheader_image.height }}px;
+                    width: {{ subheader_image.width }}px;">
+            </div>
+
+          	<div class="info">
+                <h1 class="subheader-title">{{ subheader.title }}</h1>
+                <h3 class="subheader-subtitle">{{ subheader.subtitle }}</h3>
+            </div>
+	    </div>
+    </div>
+</header>

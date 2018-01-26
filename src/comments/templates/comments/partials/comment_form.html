@@ -1,0 +1,29 @@
+{% load extra_filters %} 
+
+<div class="comment-form">
+    <form method="post">
+        {% csrf_token %}
+        
+        {% for field in comment_form.hidden_fields %}
+            {% if comment %}
+                {% if field.name == "parent_id" %}
+                    {{ field | update_value:comment.id | safe }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% for field in comment_form.visible_fields %}
+            {# Only message box when user is logged in #}
+            {% if request.user.is_authenticated and request.user.is_active %}
+                {% if field.name == "message" %}
+                    <p>{{ field }}</p>
+                    <p>{{ field.errors }}</p>
+                {% endif %}
+            {% else %}
+                <p>{{ field }}</p>
+                <p>{{ field.errors }}</p>
+            {% endif %}
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</div>

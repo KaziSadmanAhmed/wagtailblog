@@ -1,0 +1,37 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+"beautifulsoup4" = "==4.6.0"
+certifi = "==2017.11.5"
+chardet = "==3.0.4"
+cssutils = "==1.0.2"
+django = "==1.11.9"
+django-assets = "==0.12"
+django-modelcluster = "==3.1"
+django-taggit = "==0.22.2"
+django-treebeard = "==4.2.0"
+djangorestframework = "==3.6.4"
+"html5lib" = "==0.999999999"
+idna = "==2.6"
+libsass = "==0.13.4"
+lxml = "==4.1.1"
+pillow = "==5.0.0"
+pytz = "==2017.3"
+requests = "==2.18.4"
+unidecode = "==1.0.22"
+"urllib3" = "==1.22"
+vizhash = "==1.4.2"
+wagtail = "==1.13.1"
+webassets = "==0.12.1"
+webencodings = "==0.5.1"
+willow = "==1.0"
+
+
+[dev-packages]
+

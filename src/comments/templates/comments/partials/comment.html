@@ -1,0 +1,12 @@
+<div class="{{ comment_wrapper_class | default:"comment-wrapper" }}">
+    <div class="comment {{ comment_extra_class }}">
+        <p class="comment-name">
+            {{ reply.get_name }}
+        </p>
+        <p class="comment-content">
+            {{ reply.message }}
+        </p>
+        {{ comment_replies }}
+    </div>
+    <span><a href="">Reply</a></span>
+</div> 

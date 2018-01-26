@@ -1,0 +1,17 @@
+{% load wagtailimages_tags snippets_tags %}
+
+<header>
+    {% menu %}
+    <div class="container">
+
+        {% image header.image fill-200x200 as header_image %}
+        <div class="header-image"
+             style="background: url({{ header_image.url }});
+                    height: {{ header_image.height }}px;
+                    width: {{ header_image.width }}px;">
+        </div>
+        <h1 class="header-title">{{ header.title }}</h1>
+        <h3 class="header-subtitle">{{ header.subtitle }}</h3>
+	
+    </div>
+</header>

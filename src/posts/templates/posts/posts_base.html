@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags snippets_tags %}
+
+{% block title %}{{ self.title }}{% if query %}: {{ query }}{% endif %}{% endblock %}
+
+{% block body_class %}{{ self.title | lower }}-page{% endblock %}
+
+{% block content %}
+
+    {% subheader %}
+
+    <div class="container">
+
+        <div class="page-content-wrapper">
+
+            {% if query %}
+
+                <div class="page-info">
+
+        		    <h1 class="page-title">
+		        	    {% block page_title_prefix %}{{ self.title }}: {% endblock %}{{ query }}
+		            </h1>
+		            <p class="meta">
+        		        <span>
+            		        {{ page.paginator.count }}
+            		        Post{% if page.paginator.exists > 1 %}s{% endif %}
+        		        </span>
+        		        <span>Page {{ page.number }} of {{ page.paginator.num_pages }}</span>
+    		        </p>
+
+                </div> 
+
+                {% cards page.object_list %}
+        
+                {% pagination query_string page posts_per_page pagination_limit %}
+
+                <p class="page-nav">
+                    <a href="{% slugurl "home" %}">
+	    	            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+		                Posts
+                    </a>
+                </p>
+
+            {% else %}
+                <div class="page-error">
+                    <h1 class="error-title">No posts found!</h1>
+                    <p class="error-message"></p>
+                </div>
+            {% endif %}
+       
+        </div>
+
+
+    </div>
+
+    {% footer %}
+
+{% endblock %}

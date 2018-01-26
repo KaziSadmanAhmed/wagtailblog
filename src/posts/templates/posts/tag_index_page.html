@@ -1,0 +1,17 @@
+{% extends "posts/posts_base.html" %}
+
+{% block title %}
+    {% if query %}
+        Tag: #{{ query }}
+    {% else %}
+        {% with self.seo_title as title %}
+            {% if title %}
+                {{ title }}
+            {% else %}
+                Tag
+            {% endif %}
+        {% endwith %}
+    {% endif %}
+{% endblock %}
+
+{% block page_title_prefix %}Tag: #{% endblock %}

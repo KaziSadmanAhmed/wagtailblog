@@ -1,0 +1,569 @@
+// modules/main.sass
+
+*
+  &::selection
+    background: $grey-light
+    color: $white1
+
+html
+  height: 100%
+
+body
+  position: relative
+  min-height: 100%
+  padding-bottom: 80px
+  background: $white2
+  box-sizing: border-box
+
+a
+  text-decoration: none
+  &:active, &:focus
+    outline: 0
+
+header
+  display: flex
+  position: relative
+  flex-direction: column
+
+header nav
+  display: flex
+  position: relative
+  background: $grey-dark
+  height: 80px
+  justify-content: center
+  align-items: center
+
+footer
+  display: flex
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  background: $grey-dark
+  height: 80px
+  justify-content: center
+  align-items: center
+  .details
+    display: block
+    position: relative
+    text-align: center
+    margin: 0
+    color: $grey-light
+    font:
+      family: "Comfortaa", cursive
+      size: 18px
+    i, svg, em
+      color: white
+
+.container
+  display: block
+  position: relative
+  max-width: $fullhd - (2 * $gap)
+  margin: 0 auto
+
+.nav-menu
+  display: inline-flex
+  justify-content: center
+  ul
+    display: block
+    position: relative
+    list-style-type: none
+    margin: 0
+    padding: 0
+  li
+    display: inline-flex
+    position: relative
+    &:not(:first-child)
+      &:before
+        display: inline
+        position: relative
+        content: "|"
+        padding: 0 0.5em
+        color: $grey-medium
+        font:
+          family: "Roboto", sans-serif
+          size: 22px
+  a
+    color: $grey-light-medium
+    transition: color 0.2s ease-out
+    font:
+      family: "Roboto", sans-serif
+      size: 22px
+    &:hover
+      color: white
+
+.search-form
+  display: block
+  position: absolute
+  right: 30px
+  input
+    height: 35px
+    background: $grey-medium-light
+    color: $grey-darkest
+    border: none
+    border-radius: 3px
+    padding-left: 10px
+    padding-right: 32px
+    box-sizing: border-box
+    transition: background 0.3s ease-out
+    font:
+      family: "Roboto", sans-serif
+      size: 16px
+      weight: 400
+    &::placeholder
+      color: $grey-dark
+      opacity: 0.75
+      transition: opacity 0.3s ease-out
+    &:hover
+      & ~ button, &::placeholder
+        opacity: 1
+    &:focus
+      outline: none
+      background: $grey-light
+      &::placeholder
+        opacity: 0
+  button
+    background: none
+    height: 35px
+    width: 35px
+    border: none
+    margin: 0
+    margin-left: -35px
+    padding: 0
+    color: $grey-dark
+    opacity: 0.75
+    cursor: pointer
+    transition: opacity 0.3s ease-out
+    &:hover
+      opacity: 1
+    &:focus
+      outline: none
+
+.header-image
+  display: block
+  position: relative
+  border-radius: 50%
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+  margin:
+    left: auto
+    right: auto
+    top: 30px
+    bottom: 20px
+
+.header-title
+  display: block
+  position: relative
+  text-align: center
+  margin-bottom: 0.2em
+  color: $grey-darkest
+  font:
+    family: "Comfortaa", cursive
+    size: 34px
+    weight: bold
+  
+.header-subtitle
+  display: block
+  position: relative
+  text-align: center
+  margin-top: 0.2em
+  color: $grey-dark
+  font:
+    family: "Comfortaa", cursive
+    size: 16px
+
+.subheader
+  display: flex
+  position: relative
+  padding-top: 20px
+  justify-content: center
+  .info
+    display: inline-flex
+    position: relative
+    flex-direction: column
+    margin-left: 20px
+    justify-content: center
+
+.subheader-image
+  display: block
+  position: relative
+  border-radius: 50%
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+
+.subheader-title
+  display: block
+  position: relative
+  margin: 0
+  margin-bottom: 0.2em
+  color: $grey-darkest
+  font:
+    family: "Comfortaa", cursive
+    size: 30px
+    weight: bold
+
+.subheader-subtitle
+  display: block
+  position: relative
+  margin: 0
+  color: $grey-dark
+  font:
+    family: "Comfortaa", cursive
+    size: 14px
+
+.page-content-wrapper
+  display: block
+  position: relative
+  margin: 30px 0
+  padding: 0 $gap
+  max-width: 100%
+
+.post-page .page-content-wrapper
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+.page-info, .page-error
+  display: block
+  position: relative
+
+.page-error
+  margin-top: 5em
+  text-align: center
+
+.meta
+  display: block
+  position: relative
+  p
+    display: flex
+    position: relative
+    margin: 0
+    padding: 5px 0
+    &:first-child span
+      &:not(:first-child):before
+        content: "|"
+    &:nth-child(2) span
+      &:not(:first-child):before
+        content: "/"
+  span
+    display: inline-flex
+    position: relative
+    &:not(:first-child):before
+      display: inline-block
+      position: relative
+      padding: 0 5px
+      color: $brown-medium-lighter
+    &, a
+      color: $brown
+      font:
+        family: "Roboto", sans-serif
+        size: 16px
+        weight: 500
+    a
+      transition: color 0.2s ease-out
+      &:hover
+        color: $brown-darkest
+
+.page-title
+  display: block
+  position: relative
+  margin: 0 0 10px
+  color: $brown
+  font:
+    family: "Dosis", sans-serif
+    size: 34px
+
+.posts
+  display: flex
+  position: relative
+  width: 100%
+  flex-wrap: wrap
+
+.sidebar
+  display: inline-flex
+  position: relative
+  width: 30%
+  flex-direction: column
+  a
+    width: 100%
+    &:not(:last-child)
+      margin-bottom: 15px
+  .post
+    display: flex
+    position: relative
+    background: $white1
+    justify-content: space-between
+    border-radius: 3px
+    overflow: hidden
+    box-shadow: 0 2px 5px rgba(46, 61, 73, 0.15)
+    transition: all 0.3s ease-out
+    --post-image-height: 120px
+    height: var(--post-image-height)
+    &:hover
+      background: white
+      box-shadow: 0 5px 10px -5px rgba(46, 61, 73, 0.5), 0 3px 20px rgba(46, 61, 73, 0.1), 0 3px 20px rgba(46, 61, 73, 0.1)
+    .post-image-wrapper, .post-info
+      display: inline-block
+      position: relative
+    .post-info
+      width: calc(100% - var(--post-image-height))
+      padding: 10px
+    .post-title
+      margin-bottom: 0.3em
+      --font-size: 18px
+      --line-height: 1.5
+      font-size: var(--font-size)
+      line-height: var(--line-height)
+      height: calc(calc(var(--font-size) * 2) * var(--line-height))
+    .post-teaser
+      margin: 0
+      font:
+        family: "Roboto", sans-serif
+        size: 13px
+
+.sidebar-title
+  display: block
+  position: relative
+  color: $brown
+  margin: 0 0 0.3em
+  line-height: 1.8
+  font:
+    family: "Dosis", sans-serif
+    size: 24px
+
+.post-wrapper
+  display: block
+  position: relative
+  width: 65%
+
+.post
+  display: block
+  position: relative
+  margin: 0
+  .rich-text
+    text-align: left
+    color: $grey-medium
+    line-height: 1.5
+    font:
+      family: "Roboto", sans-serif
+      size: 18px
+
+.posts .post
+  background: $white1
+  border-radius: 3px
+  --row-items: 4
+  --width: 315px
+  width: var(--width)
+  height: 528px
+  --margin: calc(calc(100% - calc(var(--width) * var(--row-items))) / calc(var(--row-items) - 1))
+  margin: 30px 0
+  overflow: hidden
+  box-shadow: 0 3px 10px rgba(46, 61, 73, 0.15)
+  transition: all 0.3s ease-out
+  &:not(:nth-child(4n))
+    margin-right: var(--margin)
+  &:hover
+    background: white
+    box-shadow: 0 20px 50px -25px rgba(46, 61, 73, 0.5), 0 5px 25px rgba(46, 61, 73, 0.1), 0 5px 25px rgba(46, 61, 73, 0.1)
+    & .post-image
+      transform: scale(1.1)
+  .post-image-wrapper
+    width: 100%
+    overflow: hidden
+  .post-image
+    width: 100%
+    height: 100%
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    transition: transform 0.3s ease-out
+  .post-info
+    padding: 20px
+  .post-title
+    --font-size: 28px
+    line-height: var(--line-height)
+    font-size: var(--font-size)
+    height: calc(calc(var(--font-size) * 3) * var(--line-height))
+  .post-teaser
+    font-size: 16px
+    margin-bottom: 0
+    font:
+      family: "Roboto", sans-serif
+      size: 16px
+
+.post-info
+  display: block
+  position: relative
+  box-sizing: border-box
+
+.post-wrapper .post-info
+  margin-bottom: 15px
+
+.post-teaser
+  display: block
+  position: relative
+  color: $grey-light
+  text-align: left
+  line-height: 1.5
+  word-wrap: break-word
+  hyphens: auto
+
+.post-title, .error-title
+  display: block
+  position: relative
+  max-width: 100%
+  margin: 0 0 10px
+  color: $brown
+  overflow: hidden
+  word-wrap: break-word
+  hyphens: auto
+  --line-height: 1.5
+  transition: color 0.2s ease-out
+  font:
+    family: "Dosis", sans-serif
+    size: 48px
+
+a .post-title
+  display: inline-block
+  margin: 0
+  &:hover
+    color: $brown-darkest
+
+.post-image
+  display: block
+  position: relative
+  width: 100%
+  height: 450px
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+
+.tags
+  display: block
+  position: relative
+  margin: 30px 0
+  padding: 20px 0
+  border-top: 1px solid $grey-light-medium
+  border-bottom: 1px solid $grey-light-medium
+
+.tag
+  display: inline-block
+  position: relative
+  border-bottom: dashed 1px
+  color: $brown
+  transition: color 0.3s ease-out
+  font:
+    family: "Roboto", sans-serif
+    size: 20px
+  &:hover
+    border-bottom: solid 1px
+    color: $brown-darkest
+  &::before
+    display: inline-block
+    position: relative
+    content: "#"
+
+.pagination
+  display: block
+  position: relative
+  margin: 30px 0
+  padding: 0
+  text-align: center
+
+.page-nav
+  display: inline-block
+  position: relative
+  background: $blue-grey
+  border-radius: 3px
+  box-shadow: 0 5px 10px -5px rgba(46, 61, 73, 0.5), 0 3px 20px rgba(46, 61, 73, 0.1), 0 3px 20px rgba(46, 61, 73, 0.1)
+  transition: background 0.3s ease-out
+  &:hover, &.active
+    background: $blue-grey-dark
+  a
+    display: block
+    position: relative
+    color: white
+    padding: 10px 15px
+    font:
+      family: "Roboto", sans-serif
+      size: 18px
+
+.comments
+  display: block
+  position: relative
+  font:
+    family: "Roboto", sans-serif
+    size: 16px
+
+.comment-wrapper
+  display: block
+  position: relative
+  padding: 20px
+  margin-bottom: 20px
+  background: $white1
+  border-radius: 3px
+
+.comment
+  display: block
+  position: relative
+  header
+    display: flex
+    flex-direction: row
+    align-items: center
+
+.comment-image
+  display: inline-block
+  position: relative
+  border-radius: 50%
+  background:
+    size: cover
+    repeat: no-repeat
+    position: center
+
+.comment-name
+  display: inline-block
+  margin: 0 10px
+
+.comment-name-tag
+  display: inline-block
+  border: 1px solid $blue-grey-300
+  padding: 3px
+  margin-left: 5px
+  color: $blue-grey-300
+  font-size: 12px
+  border-radius: 3px
+  letter-spacing: 0.03em
+
+.comment-message
+  margin: 20px 0
+  padding: 10px
+  background: $blue-grey-lightest
+  border-radius: 3px
+  color: $grey-medium
+  font:
+    family: "Roboto", sans-serif
+    size: 14px
+    weight: 400
+
+.comment-form
+  display: block
+  position: relative
+
+.comment-replies-wrapper
+  display: block
+  position: relative
+  padding-left: 20px
+  border-left: solid 5px $blue-grey-100
+  .comment-form
+    display: none
+  hr
+    height: 1px
+    background: $blue-grey-100
+    border: none
+    margin: 10px 0
+
+.comment-reply-wrapper
+  display: block
+  position: relative

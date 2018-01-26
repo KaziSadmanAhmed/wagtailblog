@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load snippets_tags %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+
+    {% header %}
+
+    <div class="container">
+	
+        <div class="page-content-wrapper">
+
+            {% cards page.object_list %}
+
+        	{% pagination query_string page posts_per_page pagination_limit %}
+
+        </div>
+
+    </div>
+
+    {% footer %}
+
+
+{% endblock %}

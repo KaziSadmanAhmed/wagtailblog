@@ -1,0 +1,76 @@
+{% load wagtailimages_tags %}
+
+{% if page.comments.exists %}
+    <div class="comments">
+        {% for comment in page.comments.root_nodes.live %}
+            <div class="comment-wrapper">
+                <div class="comment">
+                    <header>
+			{% if comment.author and comment.author.profile_image %}
+			    {% image comment.author.profile_image fill-50x50 as comment_image %}
+			{% elif settings.home.SiteSettings.comment_image %}
+			    {% image settings.home.SiteSettings.comment_image fill-80x80 as comment_image %}
+			{% endif %}
+
+			{% if comment_image %}
+			    <div class="comment-image" style="
+				width: {{ comment_image.width }}px;
+				height: {{ comment_image.height }}px;
+				background-image: url({{ comment_image.url }});
+			    ">
+
+			    </div>
+			{% endif %}
+                        <h4 class="comment-name">{{ comment.get_name }}</h4>
+                        {% if comment.author.is_superuser %}
+                            <span class="comment-name-tag">Admin</span>
+                        {% endif %}
+                    </header>
+                    <p class="comment-message">
+                        {{ comment.message }}
+                    </p>
+                    <div class="comment-replies-wrapper">
+                        {% for reply in comment.get_children.live %}
+                            {% if reply.post == self  %}
+                                <div class="comment-reply-wrapper">
+                                    <div class="comment comment-reply">
+                    			<header>
+					    {% if comment.author and comment.author.profile_image %}
+			    			{% image comment.author.profile_image fill-50x50 as comment_image %}
+					    {% elif settings.home.SiteSettings.comment_image %}
+			    			{% image settings.home.SiteSettings.comment_image fill-80x80 as comment_image %}
+					    {% endif %}
+
+					    {% if comment_image %}
+			    			<div class="comment-image" style="
+						    width: {{ comment_image.width }}px;
+						    height: {{ comment_image.height }}px;
+						    background-image: url({{ comment_image.url }});
+			    			">
+
+			    			</div>
+					    {% endif %}
+                        		    <h4 class="comment-name">{{ comment.get_name }}</h4>
+                        		    {% if comment.author.is_superuser %}
+					    	<span class="comment-name-tag">Admin</span>
+					    {% endif %}
+                    			</header>
+
+                                        <p class="comment-message">
+                                            {{ reply.message }}
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <hr>
+                        {% endfor %}
+                        <span><a href="">Reply</a></span>
+                        {% include "comments/partials/comment_form.html" %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% include "comments/partials/comment_form.html" %}
