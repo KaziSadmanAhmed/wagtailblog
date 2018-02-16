@@ -1,2 +1,2 @@
 # wagtailblog
-A Blog developed using Wagtail.
+A Blog developed using Wagtail (Django).
