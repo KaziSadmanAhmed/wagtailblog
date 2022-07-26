@@ -28,7 +28,7 @@ unidecode = "==1.0.22"
 "urllib3" = "==1.22"
 vizhash = "==1.4.2"
 wagtail = "==1.13.1"
-webassets = "==0.12.1"
+webassets = "==2.0"
 webencodings = "==0.5.1"
 willow = "==1.0"
 
